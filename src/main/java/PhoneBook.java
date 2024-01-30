@@ -36,6 +36,9 @@ public class PhoneBook {
     }
 
     public void printAllNames(){
+        StringBuilder stringBuilder = new StringBuilder();
+        book.keySet().forEach(s -> stringBuilder.append(s).append(" "));
+        System.out.println(stringBuilder.toString());
 
     }
 }
