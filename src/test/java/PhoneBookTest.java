@@ -43,4 +43,17 @@ public class PhoneBookTest {
         Assertions.assertEquals(actual, name);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "+79194689544, Kolya",
+            "+79129678544, Olya",
+            "+79084671324, Masha",
+            "+79124688544, Vasya"
+    })
+    void findByNameTest(String number, String name){
+        PhoneBook phoneBook = PhoneBook.getInstance();
+        String actual = phoneBook.findByName(name);
+        Assertions.assertEquals(actual, number);
+    }
+
 }

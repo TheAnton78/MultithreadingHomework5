@@ -29,6 +29,10 @@ public class PhoneBook {
         return biMap.inverse().get(number);
     }
 
+    public String findByName(String name){
+        return null;
+    }
+
 
 
 
