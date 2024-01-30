@@ -1,11 +1,13 @@
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+
+import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class PhoneBook {
     private  static PhoneBook instance = null;
-    public Map<String, String> book = new TreeMap<>();
+    public Map<String, String> book = new TreeMap<>(Comparator.naturalOrder());
 
     private PhoneBook(){}
 
@@ -33,7 +35,7 @@ public class PhoneBook {
         return book.get(name);
     }
 
+    public void printAllNames(){
 
-
-
+    }
 }

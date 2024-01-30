@@ -1,10 +1,24 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 
 public class PhoneBookTest {
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut);
+    }
 
     @BeforeAll
     static void beforeAll(){
@@ -55,5 +69,14 @@ public class PhoneBookTest {
         String actual = phoneBook.findByName(name);
         Assertions.assertEquals(actual, number);
     }
+
+    @Test
+    void printAllNamesTest(){
+        PhoneBook phoneBook = PhoneBook.getInstance();
+        phoneBook.printAllNames();
+        Assertions.assertEquals("Kolya Masha Olya Vasya", outputStreamCaptor.toString()
+                .trim());
+    }
+
 
 }
