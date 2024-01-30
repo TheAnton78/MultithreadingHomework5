@@ -21,4 +21,8 @@ public class PhoneBook {
         book.put(name, number);
         return book.size();
     }
+
+    public String findByNumber(String number){
+        return null;
+    }
 }
